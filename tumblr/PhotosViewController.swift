@@ -122,6 +122,7 @@ class PhotosViewController : UIViewController, UITableViewDataSource, UITableVie
     
     func loadMoreData() {
         offset += 20
+        
         // ... Create the NSURLRequest (myRequest) ...
         let url = URL(string:"https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV&offset=\(offset)")
         let request = URLRequest(url: url!)
@@ -146,9 +147,7 @@ class PhotosViewController : UIViewController, UITableViewDataSource, UITableVie
                         
                         let responseFieldDictionary = responseDictionary["response"] as! NSDictionary
                         
-                        //self.posts = responseFieldDictionary["posts"] as! [NSDictionary]
                         self.posts.append(contentsOf: responseFieldDictionary["posts"] as! [NSDictionary])
-                        //self.table.reloadData()
                     }
                 }
             self.table.reloadData()
